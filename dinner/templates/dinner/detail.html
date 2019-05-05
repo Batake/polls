@@ -1,0 +1,14 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+<h1>{{ dinner.dinner_text }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'dinner:vote' dinner.id%}" method="post">
+{% csrf_token %}
+{% for menu in dinner.menu_set.all %}
+    <input type="radio" name="menu" id="menu{{ forloop.counter }}" value="{{ menu.id }}">
+    <label for="menu{{ forloop.counter }}">{{menu.menu_text}}</label><br>
+{% endfor %}
+<input type="submit" value="Vote">
+</form>

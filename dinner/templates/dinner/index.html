@@ -1,0 +1,27 @@
+{% comment %} {% load staticfiles %} {% endcomment %}
+{% load static %}
+
+{% comment %} <link rel="stylesheet" type="text/css" href="{% static 'dinner/style.css' %}"> {% endcomment %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+
+{% if latest_dinner_list %}
+    {% comment %} <ul>
+    {% for dinner in latest_dinner_list %}
+        <li><a href="{% url 'dinner:detail' dinner.id %}">{{dinner.dinner_text}}</a></li>
+    {% endfor %}
+    </ul> {% endcomment %}
+    <table border="1" class="table table-striped">
+        <tr>
+            <th>料理ジャンル</th>
+            <th>公開日</th>
+        </tr>
+        {% for dinner in latest_dinner_list %}
+            <tr>
+                <td><a href="{% url 'dinner:detail' dinner.id %}">{{dinner.dinner_text}}</a></td>
+                <td>{{ dinner.pub_date }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>No dinners are available.</p>
+{% endif %}

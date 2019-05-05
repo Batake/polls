@@ -1,0 +1,8 @@
+li a {
+    color: green;
+    background-color: gray;
+}
+
+body {
+    background: white url("images/dinner.jpeg") no-repeat;
+}
