@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+import django_heroku
+TEST_RUNNER = 'django_heroku.HerokuDiscoverRunner'
+
 """Django's command-line utility for administrative tasks."""
 import os
 import sys

@@ -124,14 +124,9 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-#add for heroku deploying
-DEBUG = False
 
-try:
-    from .local_settings import *
-except ImportError:
-    pass
 
-if not DEBUG:
-    import django_heroku
-    django_heroku.settings(locals())
+
+# Configure Django App for Heroku.
+import django_heroku
+django_heroku.settings(locals())
